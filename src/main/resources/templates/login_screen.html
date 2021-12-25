@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизація</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+</head>
+<body class="text-center vsc-initialized">
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">&nbsp;</div>
+</header>
+<div class="container">
+    <h1 class="h3 mb-3 font-weight-normal">Авторизуйтесь, будь ласка</h1>
+    <div class="alert alert-danger alert-dismissible fade show" th:if="${param.error}">Неправильне ім'я користувача чи пароль!</div>
+    <div class="alert alert-success alert-dismissible fade show text-center mx-auto" th:if="${param.logout}">Ви успішно вийшли</div>
+    <form th:action="@{/login}" method="post" class="m-2">
+        <div class="m-2"><input type="text" name="username" required="" placeholder="Ваше ім'я"/></div>
+        <div class="m-2"><input type="password" name="password" placeholder="Пароль" required=""/></div>
+        <button class="btn btn-primary m-2" type="submit">Ввійти</button>
+    </form>
+    <a href="/registration">Реєстрація нового користувача</a>
+</div>
+<footer th:insert="components/footer.html"></footer>
+</body>
+</html>
