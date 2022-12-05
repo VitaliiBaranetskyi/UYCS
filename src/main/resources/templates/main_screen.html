@@ -9,7 +9,11 @@
 <body>
 <header th:insert="components/header.html"></header>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h2>Вітаємо на нашому навчальному веб-сайті.</h2>
+    <!--h2>Вітаємо на нашому веб-сайті, який призначений для удосконалення навичок з математичних розрахунків. Нажимайте кнопку нижче, щоб розпочати</h2-->
+    <img src="https://psyhosoma.com/wp-content/uploads/2019/06/treniruy-mozg1.jpg" class="img-responsive">
+    <form th:action="@{/game/new}" method="get" class="m-5">
+        <input class="btn btn-outline-primary" type="submit" value="Почати тренування!"/>
+    </form>
 </div>
 <footer th:insert="components/footer.html"></footer>
 </body>

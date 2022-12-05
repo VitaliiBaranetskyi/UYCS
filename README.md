@@ -1,4 +1,4 @@
-# csdt-2122-ki47-baranetskyivv
+# Update your calculation skills
 A service to test and update your calculation skills.
 ## Idea
 The main idea is to create an app that can be used by someone to test or improve their mathematical knowledge. 
