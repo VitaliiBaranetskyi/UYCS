@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script>
+    function validation() {
+        a = document.getElementById("password");
+        b = document.getElementById("repeat");
+        c = document.getElementById("submit");
+        if (a.value != b.value) {
+            c.disabled=true;
+        } else {
+            c.disabled=false;
+        }
+    }
+    </script>
+</head>
+<body class="text-center vsc-initialized">
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">&nbsp;</div>
+</header>
+<div class="container">
+    <h1 class="h3 mb-3 font-weight-normal">Заповніть, будь ласка, форму для реєстрації</h1>
+    <div class="alert alert-warning alert-dismissible fade show" th:if="${message!=null}" th:text="${message}"></div>
+    <form method="post" action="/registration" class="m-2">
+        <div class="m-2"><input type="text" maxlength="10" name="username" required="" placeholder="Ваше ім'я"/></div>
+        <div class="m-2"><input id="password" type="password" name="password" placeholder="Пароль" required="" oninput="validation()"/></div>
+        <div class="m-2"><input id="repeat" type="password" placeholder="Повторіть пароль" required="" oninput="validation()"/></div>
+        <button class="btn btn-primary m-2" type="submit" id="submit">Зареєструватись</button>
+    </form>
+    <a class="pb-2" href="/login">Повернутись на сторінку входу</a>
+
+</div>
+<footer th:insert="components/footer.html"></footer>
+</body>
+</html>
