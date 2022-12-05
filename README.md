@@ -38,7 +38,4 @@ The main idea is to create an app that can be used by someone to test or improve
 This project is Apache License 2.0 - see the [LICENSE](LICENSE) file for details
 ## Developer
 Student: Baranetskyi Vitalii
-
-Group: CE-47
-
-Subject: CSDT
+Email: vitalik.baranetskiy@gmail.com
