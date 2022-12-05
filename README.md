@@ -29,7 +29,7 @@ The main idea is to create an app that can be used by someone to test or improve
 - In file: ["application.properties"](https://github.com/VitaliiBaranetskyi/UpgradeYourCalculationSkills/blob/develop/src/main/resources/application.properties) you should [change username and password](https://www.youtube.com/watch?v=8mlM9s--xfw)(3:14):
 ```bash
    spring.datasource.username = yourname
-   spring.datasource.password = yourname
+   spring.datasource.password = yourpassword
 ```
 
 - [Run Application.java](https://www.youtube.com/watch?v=LkZP74GKfvA) (8:20) or [Run Application.java](https://www.youtube.com/watch?v=8mlM9s--xfw)(6:30)
