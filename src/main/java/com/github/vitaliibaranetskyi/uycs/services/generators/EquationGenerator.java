@@ -24,65 +24,32 @@ public class EquationGenerator {
 
     public Equation createEquationFromArray(ArrayList<String> arr) {
         arr = validateDivisionAndUpdateEquationArray(arr);
-        ArrayList<String> newArr = new ArrayList<>(arr);
         Equation equation = new Equation();
-        equation.setArray(newArr);
-        float firstNum;
-        float secondNum;
-        float answer = 0;
-        for (int i = 0; i < arr.size(); i++) {
-            switch (arr.get(i)) {
-                case "/": {
-                    firstNum = Float.parseFloat(arr.get(i - 1));
-                    secondNum = Float.parseFloat(arr.get(i + 1));
-                    answer = firstNum / secondNum;
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.add(i - 1, Float.toString(answer));
-                    i = 0;
-                    break;
-                }
-                case "*": {
-                    firstNum = Float.parseFloat(arr.get(i - 1));
-                    secondNum = Float.parseFloat(arr.get(i + 1));
-                    answer = firstNum * secondNum;
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.add(i - 1, Float.toString(answer));
-                    i = 0;
-                    break;
-                }
+        equation.setArray(new ArrayList<>(arr));
+        int i = 0;
+
+        while (i < arr.size()) {
+            String operator = arr.get(i);
+            if (operator.equals("*") || operator.equals("/")) {
+                performOperation(arr, i, operator);
+                i = 0;
+            } else {
+                i++;
             }
         }
-        for (int i = 0; i < arr.size(); i++) {
-            switch (arr.get(i)) {
-                case "+": {
-                    firstNum = Float.parseFloat(arr.get(i - 1));
-                    secondNum = Float.parseFloat(arr.get(i + 1));
-                    answer = firstNum + secondNum;
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.add(i - 1, Float.toString(answer));
-                    i = 0;
-                    break;
-                }
-                case "-": {
-                    firstNum = Float.parseFloat(arr.get(i - 1));
-                    secondNum = Float.parseFloat(arr.get(i + 1));
-                    answer = firstNum - secondNum;
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.remove(i - 1);
-                    arr.add(i - 1, Float.toString(answer));
-                    i = 0;
-                    break;
-                }
+
+        i = 0;
+        while (i < arr.size()) {
+            String operator = arr.get(i);
+            if (operator.equals("+") || operator.equals("-")) {
+                performOperation(arr, i, operator);
+                i = 0;
+            } else {
+                i++;
             }
         }
-        equation.setInitialAnswer(answer);
+
+        equation.setInitialAnswer(Float.parseFloat(arr.get(0)));
         return equation;
     }
 
@@ -114,5 +81,31 @@ public class EquationGenerator {
             }
         }
         return arr;
+    }
+
+    private void performOperation(ArrayList<String> arr, int index, String operator) {
+        float firstNum = Float.parseFloat(arr.get(index - 1));
+        float secondNum = Float.parseFloat(arr.get(index + 1));
+        float result;
+
+        switch (operator) {
+            case "*":
+                result = firstNum * secondNum;
+                break;
+            case "/":
+                result = firstNum / secondNum;
+                break;
+            case "+":
+                result = firstNum + secondNum;
+                break;
+            case "-":
+                result = firstNum - secondNum;
+                break;
+            default:
+                return;
+        }
+
+        arr.subList(index - 1, index + 2).clear();
+        arr.add(index - 1, Float.toString(result));
     }
 }
