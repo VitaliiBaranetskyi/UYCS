@@ -43,17 +43,13 @@ public class GameController {
     @PostMapping("/check")
     public String checkAnswer(@AuthenticationPrincipal User user,
                               @RequestParam Long eqId,
-                              @RequestParam String userAnswer,
+                              @RequestParam Float userAnswer,
                               Model model) {
 
         model.addAttribute("userName", user.getUsername());
 
         Equation equation = equationRepo.findById(eqId);
-        try {
-            equation.setUserAnswer(Float.parseFloat(userAnswer));
-        } catch (NumberFormatException e) {
-            equation.setUserAnswer(0.0000001f);
-        }
+        equation.setUserAnswer(userAnswer);
 
         //setDate
         Date date = new Date();
